@@ -1,6 +1,9 @@
-from xgoogle.search import GoogleSearch
-gs = GoogleSearch("cat facts")
-gs.results_per_page = 10
-results = gs.get_results()
-for res in results:
-	print res.title.encode('utf8')
+import subprocess;
+import sys;
+command = '';
+for cmd in sys.argv[1:]:
+	command=command+' '+cmd;
+p = subprocess.Popen(command,shell=True,
+		stderr=subprocess.PIPE);
+out, err = p.communicate()
+print err;
